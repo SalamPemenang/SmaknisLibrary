@@ -1,0 +1,1 @@
+<h1>home {{Session::get('anggota_nama')}}</h1> <h4><a href="{{route('Keluar')}}">keluar</a></h4>

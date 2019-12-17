@@ -3,39 +3,59 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\VerifiesEmails;
+use Illuminate\Http\Request;
+use Session;
+use Mail;
+use App\Anggota;
 
 class VerificationController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Email Verification Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller is responsible for handling email verification for any
-    | user that recently registered with the application. Emails may also
-    | be re-sent if the user didn't receive the original email message.
-    |
-    */
+   public function showverifikasi(){
+    return view('layouts.email.verifikasi');
+   }
+   public function kirimverifikasi(Request $request){
+        $kode = rand(1,1000000);
 
-    use VerifiesEmails;
+        try{
+            Mail::send('layouts.email.email', ['kode' => $kode], function ($message) use ($request)
+            {
+                $message->subject('Verifikasi Kode');
+                $message->from('SmaknisPerpusApp@smaknis.com', 'Smaknis');
+                $message->to($request->posel);
+            });
 
-    /**
-     * Where to redirect users after verification.
-     *
-     * @var string
-     */
-    protected $redirectTo = '/home';
+            if(!Anggota::where('posel', $request->posel)->first()){
+                return redirect()->back()->with('alert-failed', 'Posel/email tidak terdaftar');
+            }else{
+                $a = Anggota::where('posel', $request->posel)->first();
+                    $af = Anggota::find($a->anggota_id);
+                    $af->kode_konfirmasi = $kode;
+                    $af->save();
+            }
+            Session::put('posel', $request->posel);
+            return redirect()->route('konfirmasi-show-kode-verifi')
+                                ->with('alert-success','Kode telah di Kirim ke Posel/Email anda segera cek dan masukan kode');
+        }
+        catch (Exception $e){
+            return response (['status' => false,'errors' => $e->getMessage()]);
+        }
+   }
+   public function konfirmasishowverifikasi(){
+    return view('layouts.email.konfirmasi_verifikasi');
+   }
+   public function konfirmasiverifikasi(Request $req){
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-        $this->middleware('signed')->only('verify');
-        $this->middleware('throttle:6,1')->only('verify', 'resend');
-    }
+    $posel = Session::get('posel');
+    $data = Anggota::where('posel', $posel)->first();
+    if($req->kode_konfirmasi == $data->kode_konfirmasi){
+
+        $verifi = Anggota::find($data->anggota_id);
+        $verifi->status_anggota = 1;
+        $verifi->kode_konfirmasi = null;
+        $verifi->save();
+        Session::flush();
+        return redirect()->route('Masuk')->with('alert-success', 'akun telah di verifikasi ');
+    }   
+        return redirect()->back();
+   }
 }
