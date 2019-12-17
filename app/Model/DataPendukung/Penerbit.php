@@ -11,4 +11,9 @@ class Penerbit extends Model
     protected $primaryKey = 'penerbit_id';
     const CREATED_AT = 'pembuatan';
     const UPDATED_AT = 'perubahan';
+
+    public function biblio()
+    {
+    	return $this->hasOne('App\Model\DataMaster\Biblio');
+    }
 }
