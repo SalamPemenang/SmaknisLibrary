@@ -7,7 +7,7 @@
  <!-- NProgress -->
  <script src="{{asset('gentelella/vendors/nprogress/nprogress.js')}}"></script>
  <!-- Chart.js -->
- <script src="{{asset('gentelella/vendors/Chart.js/dist/Chart.min.js')}}"></script>
+ <script src="{{asset('gentelella/chart/Chart.min.js')}}"></script>
  <!-- gauge.js -->
  <script src="{{asset('gentelella/vendors/gauge.js/dist/gauge.min.js')}}"></script>
  <!-- bootstrap-progressbar -->

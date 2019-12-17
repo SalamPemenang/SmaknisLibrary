@@ -1,31 +1,52 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Ubah Data Anggota Tipe</title>
-	<link rel="stylesheet" href="{{ asset('css/datamaster.css') }}">
-</head>
-<body>
-	{{-- Form Tabel Anggota Tipe --}}
-		<div class="column">
-			<div class="card">
-                <h4>Anggota Tipe</h4>
-                <form action="{{ route('operator.anggotatipe.kirim') }}" method="POST">
-                	@csrf
-                	<input type="hidden" name="anggota_tipe_id" value="{{ $anggotatipe->anggota_tipe_id }}">
-                	<label for="anggota_tipe_nama">Tipe Anggota :</label>
-                	<input type="text" name="anggota_tipe_nama" class="@error('anggota_tipe_nama') is-invalid @enderror" value="{{ $anggotatipe->anggota_tipe_nama }}"> <br/>
-                	@error('anggota_tipe_nama')
-                		<span class="invalid-feedback" role="alert">
-                			<strong>{{ $message }}</strong>
-                		</span>
-                	@enderror
-                	<br/>
-                	<button type="submit">Simpan</button>
-                </form>
+@extends('layouts.operator.master')
+
+@section('judul')
+Tambah Data-Pendukung Anggota (Operator)
+@stop
+
+@section('subJudul')
+<h3>Ubah Data-Pendukung</h3>
+<br /><br />
+@stop
+
+@section('konten')
+<div class="row">
+	<!-- Form Anggota-Tipe -->
+	<div class="col-md-12 col-xs-12">
+		<div class="x_panel">
+			<div class="x_title">
+				<h2>Form Anggota Tipe</h2>
+				<ul class="nav navbar-right panel_toolbox">
+					<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+					</li>
+					<li><a class="close-link"><i class="fa fa-close"></i></a>
+					</li>
+				</ul>
+				<div class="clearfix"></div>
+			</div>
+			<div class="x_content">
+				<br />
+				<form class="form-horizontal form-label-left input_mask" action="{{ route('operator.store.DataPendukung.tipe') }}" method="post">
+					@csrf
+
+					<div class="form-group">
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<input type="text" class="form-control" name="anggota_tipe_nama" value="{{ $anggotaTipe->anggota_tipe_nama }}">
+							<input type="hidden" name="anggota_tipe_id" value="{{ $anggotaTipe->anggota_tipe_id }}">
+						</div>
+					</div>
+					<div class="ln_solid"></div>
+					<div class="form-group">
+						<div class="col-md-12 col-sm-12 col-xs-12 ">
+							<button type="submit" class="btn btn-success form-control">Submit</button>
+						</div>
+					</div>
+
+				</form>
 			</div>
 		</div>
-	{{-- Batas Akhir Form Tabel Anggota Tipe --}}
-</body>
-</html>
+	</div>
+	<!-- Bagian Akhir Form Anggota-Tipe -->
+</div>
+@stop
+

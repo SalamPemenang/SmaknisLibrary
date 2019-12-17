@@ -52,5 +52,7 @@
 
 		<!-- Link Js -->
 		@include('layouts/admin/partials/js')
+
+		@stack('script')
 	</body>
 </html>

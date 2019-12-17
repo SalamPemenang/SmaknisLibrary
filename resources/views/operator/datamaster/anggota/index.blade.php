@@ -37,14 +37,12 @@ Anggota - Operator
 			<table id="anggota" class="table table-striped table-bordered">
 				<thead>
 					<tr>
-						<th>No</th>
-						<th>Nama</th>
-						<th>Jurusan</th>
-						<th>Kelas</th>
-						<th>Pos-el</th>
-						<th>Pembuatan</th>
-						<th>Perubahan</th>
-						<th>Opsi</th>
+						<th class="text-center">No</th>
+						<th class="text-center">Nama</th>
+						<th class="text-center">Jurusan</th>
+						<th class="text-center">Kelas</th>
+						<th class="text-center">Pos-el</th>
+						<th class="text-center">Opsi</th>
 					</tr>
 				</thead>
 			</table>
@@ -63,6 +61,7 @@ Anggota - Operator
 			processing: true,
 			responsive: true,
 			serverSide: true,
+			"bDestroy": true,
 			ajax: '{!! route('operator.anggota.datatables') !!}',
 			columns: [
 			{data: 'DT_RowIndex', name: 'DT_RowIndex', width: '5px',},
@@ -70,8 +69,6 @@ Anggota - Operator
 			{data: 'jurusan_nama', name: 'jurusan_id', width: '30px', orderable: true},
 			{data: 'kelas_nama', name: 'kelas_id', width: '30px', orderable: true},
 			{data: 'posel', name: 'posel', width: '30px', orderable: true},
-			{data: 'pembuatan', name: 'pembuatan', width: '50px', orderable: true},
-			{data: 'perubahan', name: 'perubahan', width: '50px', orderable: true},
 			{data: 'action', name: 'action', width: '100px', orderable: false, searchable: false,},
 			]
 		});

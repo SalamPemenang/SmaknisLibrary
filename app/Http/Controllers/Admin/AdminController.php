@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Session;
+use App\Charts\BiblioChart;
 use App\Model\DataPendukung\Anggota;
 
 class AdminController extends Controller
@@ -13,6 +14,7 @@ class AdminController extends Controller
 	{
 		return view('admin.index');
 	}
+
 
     public function dasbor(){
         if(!Session::get('login-admin')){
