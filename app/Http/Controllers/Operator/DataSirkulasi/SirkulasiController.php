@@ -10,7 +10,7 @@ use App\Model\DataMaster\Anggota;
 use App\Model\DataPendukung\AnggotaTipe;
 use App\Model\DataMaster\Biblio;
 use App\Model\DataPendukung\Aturan;
-use DB;
+use Illuminate\Support\Facades\DB;
 use Session;
 use Carbon\Carbon;
 use Yajra\Datatables\Datatables;
@@ -96,7 +96,7 @@ class SirkulasiController extends Controller
 
         $id = $sirkulasi->biblio_id;
         $biblio = Biblio::find($id);
-        $b = DB::table('status_item')->where('status_item_nama', '=', 'tidak tersedia')->get()->first();
+        $b = DB::table('status_item')->where('status_item_nama', '=', 'Dipinjam')->get()->first();
         $biblio->status_item_id = $b->status_item_id;
         $biblio->save();
         return redirect()->route('operator.lihat.peminjaman');
@@ -123,9 +123,9 @@ class SirkulasiController extends Controller
     public function searchBiblio(Request $request)
     {
         $search = $request->get('term');
-        $b = DB::table('status_item')->where('status_item_nama', '=', 'Tersedia')->get()->first();
-        $tabel = DB::table('biblio')->where('status_item_id', '=', $b->status_item_id);
-        $biblio = DB::table($tabel)->where('judul', 'LIKE', '%'.$request->search."%")->get();
+        $b = DB::table('status_item')->where('status_item_nama', '=', 'Tersedia')->first();
+        $tabel = DB::table('biblio')->where('status_item_id', '=' , $b->status_item_id);
+        $biblio = DB::table($tabel)->where('judul','LIKE','%'.$search."%")->get();
         $data=array();
         foreach ($biblio as $a) {
              $data[]=array('value'=>$a->biblio_id, 'id'=>$a->biblio_id, 'label'=>$a->judul);
@@ -142,7 +142,7 @@ class SirkulasiController extends Controller
         $search = $request->get('term');
         $b = DB::table('status_item')->where('status_item_nama', '=', 'Dipinjam')->get()->first();
         $tabel = DB::table('biblio')->where('status_item_id', '=', $b->status_item_id);
-        $biblio = DB::table($tabel)->where('judul', 'LIKE', '%'.$request->search."%")->get();
+        $biblio = DB::table($tabel)->where('judul', 'LIKE', '%'.$search."%")->get();
         $data=array();
         foreach ($biblio as $a) {
              $data[]=array('value'=>$a->biblio_id, 'id'=>$a->biblio_id, 'label'=>$a->judul);

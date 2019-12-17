@@ -33,7 +33,7 @@ Tambah Biblio - Operator
 
 					<div class="col-md-6 col-sm-6 col-xs-12 form-group">
 						<label for="judul">Judul*</label>
-						<input type="text" name="judul" class="form-control @error('judul') is-invalid @enderror" placeholder="Judul Buku" autocomplete="off" value="{{ old('judul') }}">
+						<input type="text" name="judul" class="form-control" placeholder="Judul Buku" autocomplete="off" value="{{ old('judul') }}">
 						@error('judul')
 							<span class="invalid-feedback" role="alert">
 								<strong>{{ $message }}</strong>
@@ -45,7 +45,7 @@ Tambah Biblio - Operator
 						<div class="row">
 							<div class="col-md-6">
 								<label for="edisi">Edisi*</label>
-								<input type="text" name="edisi" class="form-control @error('edisi') is-invalid @enderror" placeholder="Edisi Buku" autocomplete="off" value="{{ old('edisi') }}">
+								<input type="text" name="edisi" class="form-control" placeholder="Edisi Buku" autocomplete="off" value="{{ old('edisi') }}">
 								@error('edisi')
 									<span class="invalid-feedback" role="alert">
 										<strong>{{ $message }}</strong>
@@ -54,7 +54,7 @@ Tambah Biblio - Operator
 							</div>
 							<div class="col-md-6">
 								<label for="penerbit_tempat">Tempat Terbit Buku*</label>
-								<input type="text" name="penerbit_tempat" class="form-control @error('penerbit_tempat') is-invalid @enderror" autocomplete="off" value="{{ old('penerbit_tempat') }}">
+								<input type="text" name="penerbit_tempat" class="form-control" autocomplete="off" value="{{ old('penerbit_tempat') }}">
 								@error('penerbit_tempat')
 									<span class="invalid-feedback" role="alert">
 										<strong>{{ $message }}</strong>
@@ -76,7 +76,7 @@ Tambah Biblio - Operator
 
 					<div class="col-md-6 col-sm-6 col-xs-12 form-group">
 						<label for="isbn">ISBN*</label>
-						<input type="text" name="isbn" class="form-control @error('isbn') is-invalid @enderror" id="isbn" placeholder="ISBN" autocomplete="off" value="{{ old('isbn') }}">
+						<input type="text" name="isbn" class="form-control" id="isbn" placeholder="ISBN" autocomplete="off" value="{{ old('isbn') }}">
 						@error('isbn')
 							<span class="invalid-feedback" role="alert">
 								<strong>{{ $message }}</strong>
@@ -98,7 +98,7 @@ Tambah Biblio - Operator
 						<div class="row">
 							<div class="col-md-6 col-sm-6 col-xs-12 form-group">
 								<label for="harga_buku">Harga Buku*</label>
-								<input type="text" name="harga_buku" class="form-control harga @error('harga') is-invalid @enderror" id="harga_buku" autocomplete="off" value="{{ old('harga') }}">
+								<input type="text" name="harga_buku" class="form-control harga" id="harga_buku" autocomplete="off" value="{{ old('harga') }}">
 								@error('harga')
 								<span class="invalid-feedback" role="alert">
 									<strong>{{ $message }}</strong>
@@ -107,7 +107,9 @@ Tambah Biblio - Operator
 							</div>
 							<div class="col-md-6 col-sm-6 col-xs-12 form-group">
 								<label for="penerbit_tahun">Tahun Terbit Buku*</label>
-								<input type="text" name="penerbit_tahun" class="form-control @error('penerbit_tahun') is-invalid @enderror" id="penerbit_tahun" autocomplete="off" value="{{ old('penerbit_tahun') }}">
+								<input type="text" name="penerbit_tahun" class="form-control
+								
+								" id="penerbit_tahun" autocomplete="off" value="{{ old('penerbit_tahun') }}">
 								@error('penerbit_tahun')
 									<span class="invalid-feedback" role="alert">
 										<strong>{{ $message }}</strong>
@@ -119,7 +121,7 @@ Tambah Biblio - Operator
 
 					<div class="col-md-12 form-group">
 						<label for="deskripsi">Deskripsi*</label>
-						<textarea name="deskripsi" class="form-control @error('deskripsi') is-invalid @enderror" rows="10" placeholder="Isi secara singkat..." id="deskripsi">{{ old('deskripsi') }}</textarea>
+						<textarea name="deskripsi" class="form-control" rows="10" placeholder="Isi secara singkat..." id="deskripsi">{{ old('deskripsi') }}</textarea>
 						@error('deskripsi')
 							<span class="invalid-feedback" role="alert">
 								<strong>{{ $message }}</strong>
@@ -131,7 +133,7 @@ Tambah Biblio - Operator
 						<div class="row">
 							<div class="col-md-6 col-sm-6 col-xs-12 form-group">
 								<label for="tipekoleksi_id">Tipe Koleksi*</label>
-								<select name="tipekoleksi_id" class="form-control @error('tipekoleksi_id') is-invalid @enderror">
+								<select name="tipekoleksi_id" class="form-control">
 									<option value="">--Silahkan Pilih--</option>}
 									@foreach($tipekoleksi as $tipekoleksis)
 									<option value="{{ $tipekoleksis->tipekoleksi_id }}">{{ $tipekoleksis->tipekoleksi_nama }}</option>
@@ -145,7 +147,7 @@ Tambah Biblio - Operator
 							</div>
 							<div class="col-md-6 col-sm-6 col-xs-12 form-group">
 								<label for="klasifikasi_id">Klasifikasi*</label>
-								<select name="klasifikasi_id" class="form-control @error('klasifikasi_id') is-invalid @enderror">
+								<select name="klasifikasi_id" class="form-control">
 									<option value="">--Silahkan Pilih--</option>}
 									@foreach($klasifikasi as $klasifikasis)
 									<option value="{{ $klasifikasis->klasifikasi_id }}">{{ $klasifikasis->klasifikasi_nama }}</option>
@@ -164,7 +166,7 @@ Tambah Biblio - Operator
 						<div class="row">
 							<div class="col-md-4 col-sm-4 col-xs-12 form-group">
 								<label for="panggil">Panggil Rak Buku*</label>
-								<input type="text" name="panggil" class="form-control @error('panggil') is-invalid @enderror" id="panggil" autocomplete="off" value="{{ old('panggil') }}">
+								<input type="text" name="panggil" class="form-control" id="panggil" autocomplete="off" value="{{ old('panggil') }}">
 								@error('panggil')
 									<span class="invalid-feedback" role="alert">
 										<strong>{{ $message }}</strong>
@@ -173,7 +175,7 @@ Tambah Biblio - Operator
 							</div>
 							<div class="col-md-5 col-sm-4 col-xs-12 form-group">
 								<label for="tingkat">Tingkatan Rak Buku*</label>
-								<input type="number" name="tingkatan" class="form-control @error('tingkatan') is-invalid @enderror" id="tingkatan" autocomplete="off" value="{{ old('tingkatan') }}">
+								<input type="number" name="tingkatan" class="form-control" id="tingkatan" autocomplete="off" value="{{ old('tingkatan') }}">
 								@error('tingkatan')
 									<span class="invalid-feedback" role="alert">
 										<strong>{{ $message }}</strong>
@@ -182,7 +184,7 @@ Tambah Biblio - Operator
 							</div>
 							<div class="col-md-3 col-sm-4 col-xs-12 form-group">
 								<label for="urutan">Urutan Buku*</label>
-								<input type="number" name="urutan" class="form-control @error('urutan') is-invalid @enderror" id="urutan" autocomplete="off" value="{{ old('urutan') }}">
+								<input type="number" name="urutan" class="form-control" id="urutan" autocomplete="off" value="{{ old('urutan') }}">
 								@error('urutan')
 									<span class="invalid-feedback" role="alert">
 										<strong>{{ $message }}</strong>
@@ -194,7 +196,7 @@ Tambah Biblio - Operator
 
 					<div class="col-md-6 col-sm-6 col-xs-12 form-group">
 						<label for="gambar">Gambar Buku*</label>
-						<input type="file" name="gambar" class="form-control @error('gambar') is-invalid @enderror" id="gambar">
+						<input type="file" name="gambar" class="form-control" id="gambar">
 						@error('gambar')
 							<span class="invalid-feedback" role="alert">
 								<strong>{{ $message }}</strong>
@@ -209,7 +211,7 @@ Tambah Biblio - Operator
 
 					<div class="col-md-6 col-sm-6 col-xs-12 form-group">
 						<label>Status Buku*</label>
-						<select name="status_item_id" class="form-control @error('status_item_id') is-invalid @enderror">
+						<select name="status_item_id" class="form-control">
 							<option value="">--Silahkan Pilih--</option>
 							@foreach($statusitem as $sim)
 							<option value="{{ $sim->status_item_id }}">{{ $sim->status_item_nama }}</option>
@@ -224,7 +226,7 @@ Tambah Biblio - Operator
 
 					<div class="col-md-6 col-sm-6 col-xs-12 form-group">
 						<label for="sumber_item_id">Sumber Buku*</label>
-						<input type="text" name="sumber_item_id" id="sumber_item_id" class="form-control @error('sumber_item_id') is-invalid @enderror" autocomplete="off">
+						<input type="text" name="sumber_item_id" id="sumber_item_id" class="form-control" autocomplete="off">
 						@error('sumber_item_id')
 							<span class="invalid-feedback" role="alert">
 								<strong>{{ $message }}</strong>
@@ -247,7 +249,7 @@ Tambah Biblio - Operator
 					<div class="col-md-6 col-sm-6 col-xs-12 form-group">
 						<div class="row">
 							<div class="col-md-10">
-								<input type="number" name="buku_tersedia" class="form-control @error('buku_tersedia') is-invalid @enderror" autocomplete="off" placeholder="Masukan Jumlah Buku yang Tersedia">
+								<input type="number" name="buku_tersedia" class="form-control" autocomplete="off" placeholder="Masukan Jumlah Buku yang Tersedia">
 								@error('buku_tersedia')
 									<span class="invalid-feedback" role="alert">
 										<strong>{{ $message }}</strong>

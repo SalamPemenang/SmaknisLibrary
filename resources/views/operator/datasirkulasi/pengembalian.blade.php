@@ -15,11 +15,11 @@
                     @csrf
                     <div class="form-group">
                         <label>Masukkan Nama Anggota</label><br>
-                        <input type="text" class="form-control" id="searchA" name="search" name="anggota_id">
+                        <input type="text" class="form-control" id="searchA" name="anggota_id">
                     </div><br>
                     <div class="form-group">
                         <label>Masukkan Buku Yang Akan Di Kembalikan</label><br>
-                        <input type="text" class="form-control" id="searchBiblio" name="search">
+                        <input type="text" class="form-control" id="searchBiblio" name="biblio_id">
                     </div><br>
                     <div class="form-group">
                         <label>Di Kembalikan Pada Tanggal</label><br>
@@ -46,7 +46,6 @@
 @stop 
 
 @push('scripts')
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 <script type="text/javascript">
  $(document).ready(function() {
@@ -97,21 +96,4 @@
  });
 });
 </script>
-
-<!-- <script type="text/javascript">
-$('#searchBiblio').on('keyup', function(){
-    $value=$(this).val();
-    $.ajax({
-        type: 'get',
-        url: '{{URL::to('sirkulasi/search/biblio/back')}}',
-        data: {'search':$value},
-        success:function(data){
-            $('#biblio').html(data);
-        }
-    });
-})
-</script> -->
-
 @endpush
-
-
