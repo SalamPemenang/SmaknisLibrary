@@ -59,7 +59,7 @@
                                         <a class="page-scroll" href="#home">HOME</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="page-scroll" href="#SB">SEARCH BUKU</a>
+                                        <a class="page-scroll" href="#SB">CARI BUKU</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="page-scroll" href="#promo">PROMO BUKU</a>
