@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'PublikController@promosi')->name('index');
+Route::get('/detail-buku/{id}', 'PublikController@detailBuku')->name('detail-buku');
+Route::get('/cari', 'PublikController@searchBuku')->name('buku-cari');
 
 
 //Auth
