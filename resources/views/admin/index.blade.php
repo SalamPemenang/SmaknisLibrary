@@ -11,7 +11,7 @@
 	<div class="col-md-6 col-sm-6 col-xs-12">
 		<div class="x_panel">
 			<div class="x_title">
-				<h2>Basic Tables <small>basic table subtitle</small></h2>
+				<h2>Infomasi Tipe Koleksi Biblio</h2>
 				<ul class="nav navbar-right panel_toolbox">
 					<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
 					</li>
@@ -30,38 +30,7 @@
 				<div class="clearfix"></div>
 			</div>
 			<div class="x_content">
-
-				<table class="table">
-					<thead>
-						<tr>
-							<th>#</th>
-							<th>First Name</th>
-							<th>Last Name</th>
-							<th>Username</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<th scope="row">1</th>
-							<td>Mark</td>
-							<td>Otto</td>
-							<td>@mdo</td>
-						</tr>
-						<tr>
-							<th scope="row">2</th>
-							<td>Jacob</td>
-							<td>Thornton</td>
-							<td>@fat</td>
-						</tr>
-						<tr>
-							<th scope="row">3</th>
-							<td>Larry</td>
-							<td>the Bird</td>
-							<td>@twitter</td>
-						</tr>
-					</tbody>
-				</table>
-
+				<canvas id="pieChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
 			</div>
 		</div>
 	</div>
@@ -70,7 +39,7 @@
 	<div class="col-md-6 col-sm-6 col-xs-12">
 		<div class="x_panel">
 			<div class="x_title">
-				<h2>Stripped table <small>Stripped table subtitle</small></h2>
+				<h2>Data Peminjaman Per Triwulan</h2>
 				<ul class="nav navbar-right panel_toolbox">
 					<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
 					</li>
@@ -88,41 +57,11 @@
 				</ul>
 				<div class="clearfix"></div>
 			</div>
-			<div class="x_content">
-
-				<table class="table table-striped">
-					<thead>
-						<tr>
-							<th>#</th>
-							<th>First Name</th>
-							<th>Last Name</th>
-							<th>Username</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<th scope="row">1</th>
-							<td>Mark</td>
-							<td>Otto</td>
-							<td>@mdo</td>
-						</tr>
-						<tr>
-							<th scope="row">2</th>
-							<td>Jacob</td>
-							<td>Thornton</td>
-							<td>@fat</td>
-						</tr>
-						<tr>
-							<th scope="row">3</th>
-							<td>Larry</td>
-							<td>the Bird</td>
-							<td>@twitter</td>
-						</tr>
-					</tbody>
-				</table>
-
-			</div>
+			<div class="x_content"></div>
 		</div>
 	</div>
 </div>
+
 @stop
+
+

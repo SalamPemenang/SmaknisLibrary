@@ -28,11 +28,7 @@ class AnggotaController extends Controller
     {
         $anggotaTipe = AnggotaTipe::all();
         $jurusan = Jurusan::all();
-        $kelas = DB::table('kelas')
-        ->join('jurusan', 'kelas.jurusan_id', '=', 'jurusan.jurusan_id')
-        ->select('kelas.*',
-            'jurusan.jurusan_nama'
-        )->get();
+        $kelas = Kelas::all();
     	return view('operator.datamaster.anggota.tambah', compact('jurusan', 'kelas', 'anggotaTipe'));
     }
 
@@ -77,7 +73,7 @@ class AnggotaController extends Controller
         ->get();
 
         return Datatables::of($anggota)
-        ->addColumn('action', 'operator.datamaster.anggota.action')
+        ->addColumn('action', 'admin.anggota.action')
         ->addIndexColumn()
         ->make(true);
     }
