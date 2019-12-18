@@ -34,8 +34,9 @@
 
           <li><a><i class="fa fa-group"></i> Keanggotaan <span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
-              <li><a href="#">Tambah Anggota</a></li>
-              <li><a href="#">Daftar Anggota</a></li>
+              <li><a href="{{ route('admin.anggota.tambah') }}">Tambah Anggota</a></li>
+              <li><a href="{{ route('admin.anggota') }}">Daftar Anggota</a></li>
+              <li><a href="{{ route('admin.datapendukung') }}">Data Pendukung Anggota</a></li>
             </ul>
           </li>
         </ul>

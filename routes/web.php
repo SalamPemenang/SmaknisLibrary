@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'PublikController@promosi')->name('index');
+Route::get('/detail-buku/{id}', 'PublikController@detailBuku')->name('detail-buku');
+Route::get('/cari', 'PublikController@searchBuku')->name('buku-cari');
 
 
 //Auth
@@ -51,10 +51,36 @@ Route::prefix('pengguna')->group(function(){
 Route::prefix('operator')->group(function(){ 
     Route::get('/dasbor', 'Operator\AnggotaController@dasbor')->name('dasbor-operator');
 });
+
+
+// Route Admin 
 Route::prefix('admin')->group(function(){ 
     Route::get('/', 'Admin\AdminController@index')->name('admin');
     Route::get('/dasbor', 'Admin\AdminController@dasbor')->name('dasbor-admin');
+    // Admin : Anggota
+    Route::get('/daftar-anggota', 'Admin\AdminController@daftarAnggota')->name('admin.anggota');
+	// DataTable-Anggota
+    Route::get('/datatable-anggota', 'Admin\AdminController@anggotaDatatable')->name('admin.anggota.datatables');
+	// Tambah-Anggota
+    Route::get('/tambah-anggota', 'Admin\AdminController@anggotaTambah')->name('admin.anggota.tambah');
+    Route::get('/tambah-anggota/store', 'Admin\AdminController@anggotaStore')->name('admin.anggota.store');
 
+    // Data-Pendukung Anggota
+    Route::get('/anggota', 'Admin\AdminController@anggotaPendukung')->name('admin.datapendukung');
+	// DataTable-Pendukung Anggota
+    Route::get('/datatable/tipe-anggota', 'Admin\AdminController@tipeAnggotaDatatable')->name('admin.datatable.tipeAnggota'); 
+    Route::get('/datatable/jurusan', 'Admin\AdminController@jurusanDatatable')->name('admin.datatable.jurusan'); 
+    Route::get('/datatable/kelas', 'Admin\AdminController@kelasDatatable')->name('admin.datatable.kelas'); 
+		// Tambah DataPendukung
+    Route::get('/tambah/data-pendukung', 'Admin\AdminController@tambahDatapendukung')->name('admin.tambah.DataPendukung');
+		// Ubah DataPendukung
+    Route::get('/ubah/anggota-tipe/{id}', 'Admin\AdminController@ubahAnggotaTipe')->name('admin.ubah.anggota.tipe');
+    Route::get('/ubah/jurusan/{id}', 'Admin\AdminController@ubahJurusan')->name('admin.ubah.jurusan');
+    Route::get('/ubah/kelas/{id}', 'Admin\AdminController@ubahKelas')->name('admin.ubah.kelas');
+		// Store DataPendukung
+    Route::post('/store/data-pendukung/anggota-tipe', 'Admin\AdminController@storeDatapendukungTipe')->name('admin.store.DataPendukung.tipe');
+    Route::post('/store/data-pendukung/jurusan', 'Admin\AdminController@storeDatapendukungJurusan')->name('admin.store.DataPendukung.jurusan');
+    Route::post('/store/data-pendukung/kelas', 'Admin\AdminController@storeDatapendukungKelas')->name('admin.store.DataPendukung.kelas');
 });
 
 // Operator Sirkulasi
@@ -112,6 +138,10 @@ Route::prefix('konfirmasi')->group(function(){
 		Route::get('/datatable/kelas', 'Operator\DataPendukung\AnggotaPendukungController@kelasDatatable')->name('operator.pendukung.datatable.kelas'); 
 		// Tambah DataPendukung
 		Route::get('/tambah/data-pendukung', 'Operator\DataPendukung\AnggotaPendukungController@tambahDatapendukung')->name('operator.tambah.DataPendukung');
+		// Ubah DataPendukung
+		Route::get('/ubah/anggota-tipe/{id}', 'Operator\DataPendukung\AnggotaPendukungController@ubahAnggotaTipe')->name('operator.ubah.anggota.tipe');
+		Route::get('/ubah/jurusan/{id}', 'Operator\DataPendukung\AnggotaPendukungController@ubahJurusan')->name('operator.ubah.jurusan');
+		Route::get('/ubah/kelas/{id}', 'Operator\DataPendukung\AnggotaPendukungController@ubahKelas')->name('operator.ubah.kelas');
 		// Store DataPendukung
 		Route::post('/store/data-pendukung/anggota-tipe', 'Operator\DataPendukung\AnggotaPendukungController@storeDatapendukungTipe')->name('operator.store.DataPendukung.tipe');
 		Route::post('/store/data-pendukung/jurusan', 'Operator\DataPendukung\AnggotaPendukungController@storeDatapendukungJurusan')->name('operator.store.DataPendukung.jurusan');
