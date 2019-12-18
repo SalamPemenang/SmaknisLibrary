@@ -101,59 +101,14 @@
                         <div class="header-content text-center">
                             <h3 class="header-title">SMK NURUL ISLAM PERPUSTAKAAN</h3>
                             <p class="text">
-                                Anda bisa melihat seluruh buku yang ada di perpustakaan lewat aplikasi ini tentu juga bisa memesan dan meminjam buku
+                                Mohon Maaf Masih Dalam Pengembangan WEB
                             </p>
-                            <p> Masuk/Daftar untuk bisa meminjam dan memesan buku </p>
-                            <ul class="header-btn">
-                                <li><a class="main-btn btn-one" rel="nofollow" href="">MASUK</a></li>
-                                <li><a class="main-btn btn-two video-popup" href="">Daftar</a></li>
-                            </ul>
                         </div> <!-- header content -->
                     </div>
                 </div> <!-- row -->
             </div> <!-- container -->
         </div> <!-- header content -->
     </header>
-
-        <section id="SB" class="services-area">
-        <div class="container-fluid">
-            <div class="row justify-content-end">
-                <div class="col-lg-3">
-
-                </div>
-                <div class="col-lg-6">
-                    <div class="footer-newsletter">
-                        <h1 class="footer-title">Cari Buku Di sini</h1>
-                         <small style="font-size: 10px;">Klik tombol search</small>
-                        <div class="newsletter">
-                            <form action="#">
-                                <input type="text" placeholder="Cari Buku">
-                                <button type="submit"><i class="lni-search"></i></button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-
-                </div>
-            </div> <!-- container -->
-        </div> <!-- conteiner -->
-    </section>
-
-    <section id="promo" class="pricing-area">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-12">
-                    <div class="section-title text-center pb-10">
-                        <h4 class="title">Buku yang di promosikan</h4>
-                        <p class="text">Anda bisa melihat buku yang di promosikan atau buku yang sering di lihat di sini</p>
-                    </div> <!-- section title -->
-                </div>
-            </div> <!-- row -->
-            <div class="row justify-content-center">    
-            </div>
-        </div> <!-- conteiner -->
-    </section>
 
     <footer id="footer" class="footer-area">
         <div class="footer-copyright">
