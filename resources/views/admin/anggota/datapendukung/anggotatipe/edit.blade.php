@@ -1,7 +1,7 @@
-@extends('layouts.operator.master')
+@extends('layouts.admin.master')
 
 @section('judul')
-Tambah Data-Pendukung Anggota (Operator)
+Ubah Data-Pendukung Anggota (Admin)
 @stop
 
 @section('subJudul')
@@ -26,7 +26,7 @@ Tambah Data-Pendukung Anggota (Operator)
 			</div>
 			<div class="x_content">
 				<br />
-				<form class="form-horizontal form-label-left input_mask" action="{{ route('operator.store.DataPendukung.tipe') }}" method="post">
+				<form class="form-horizontal form-label-left input_mask" action="{{ route('admin.store.DataPendukung.tipe') }}" method="post">
 					@csrf
 
 					<div class="form-group">

@@ -1,11 +1,11 @@
-@extends('layouts.operator.master')
+@extends('layouts.admin.master')
 @section('judul')
-	Data Pendukung Anggota - Operator
+	Data Pendukung Anggota - Admin
 @stop
 
 @section('subJudul')
 	<h1>Data Pendukung Anggota</h1>
-	<a href="{{ route('operator.tambah.DataPendukung') }}" class="btn btn-primary">Tambah</a>
+	<a href="{{ route('admin.tambah.DataPendukung') }}" class="btn btn-primary">Tambah</a>
 @stop
 
 @section('konten')
@@ -138,7 +138,7 @@
 			responsive: true,
 			serverSide: true,
 			"bDestroy": true,
-			ajax: '{!! route('operator.pendukung.datatable.tipeAnggota') !!}',
+			ajax: '{!! route('admin.datatable.tipeAnggota') !!}',
 			columns: [
 			{data: 'DT_RowIndex', name: 'DT_RowIndex', width: '5px',},
 			{data: 'anggota_tipe_nama', name: 'anggota_tipe_nama', width: '50px', orderable: true},
@@ -157,7 +157,7 @@
 			responsive: true,
 			serverSide: true,
 			"bDestroy": true,
-			ajax: '{!! route('operator.pendukung.datatable.jurusan') !!}',
+			ajax: '{!! route('admin.datatable.jurusan') !!}',
 			columns: [
 			{data: 'DT_RowIndex', name: 'DT_RowIndex', width: '5px',},
 			{data: 'jurusan_nama', name: 'jurusan_nama', width: '50px', orderable: true},
@@ -176,7 +176,7 @@
 			responsive: true,
 			serverSide: true,
 			"bDestroy": true,
-			ajax: '{!! route('operator.pendukung.datatable.kelas') !!}',
+			ajax: '{!! route('admin.datatable.kelas') !!}',
 			columns: [
 			{data: 'DT_RowIndex', name: 'DT_RowIndex', width: '5px',},
 			{data: 'kelas_nama', name: 'kelas_nama', width: '50px', orderable: true},

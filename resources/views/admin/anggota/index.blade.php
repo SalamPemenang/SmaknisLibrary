@@ -1,6 +1,6 @@
-@extends('layouts.operator.master')
+@extends('layouts.admin.master')
 @section('judul')
-Anggota - Operator  
+Anggota - Admin  
 @stop
 
 @section('konten')
@@ -53,6 +53,7 @@ Anggota - Operator
 </div>
 {{-- Batas Akhir Area Konten --}}
 @stop
+
 @push('scripts')
 <script type="text/javascript">
 	$(function(){
@@ -62,7 +63,7 @@ Anggota - Operator
 			responsive: true,
 			serverSide: true,
 			"bDestroy": true,
-			ajax: '{!! route('operator.anggota.datatables') !!}',
+			ajax: '{!! route('admin.anggota.datatables') !!}',
 			columns: [
 			{data: 'DT_RowIndex', name: 'DT_RowIndex', width: '5px',},
 			{data: 'anggota_nama', name: 'anggota_nama', width: '50px', orderable: true},

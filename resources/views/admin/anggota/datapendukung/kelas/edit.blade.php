@@ -1,7 +1,7 @@
-@extends('layouts.operator.master')
+@extends('layouts.admin.master')
 
 @section('judul')
-Tambah Data-Pendukung Anggota (Operator)
+Ubah Data-Pendukung Anggota (Admin)
 @stop
 
 @section('subJudul')
@@ -15,7 +15,7 @@ Tambah Data-Pendukung Anggota (Operator)
 	<div class="col-md-12 col-xs-12">
 		<div class="x_panel">
 			<div class="x_title">
-				<h2>Form Anggota Tipe</h2>
+				<h2>Form Kelas</h2>
 				<ul class="nav navbar-right panel_toolbox">
 					<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
 					</li>
@@ -26,13 +26,20 @@ Tambah Data-Pendukung Anggota (Operator)
 			</div>
 			<div class="x_content">
 				<br />
-				<form class="form-horizontal form-label-left input_mask" action="{{ route('operator.store.DataPendukung.tipe') }}" method="post">
+				<form class="form-horizontal form-label-left input_mask" action="{{ route('admin.store.DataPendukung.kelas') }}" method="post">
 					@csrf
 
 					<div class="form-group">
 						<div class="col-md-12 col-sm-12 col-xs-12">
-							<input type="text" class="form-control" name="anggota_tipe_nama" value="{{ $anggotaTipe->anggota_tipe_nama }}">
-							<input type="hidden" name="anggota_tipe_id" value="{{ $anggotaTipe->anggota_tipe_id }}">
+							<input type="text" class="form-control" name="kelas_nama" value="{{ $kelas->kelas_nama }}">
+							<br />
+							<select class="form-control" name="jurusan_nama" required="">
+								<option selected="" disabled="">-Pilih Jurusan-</option>
+								@foreach( $jurusan as $j )
+									<option value="{{ $j->jurusan_id }}">{{ $j->jurusan_nama }}</option>
+								@endforeach
+							</select>
+							<input type="hidden" name="kelas_id" value="{{ $kelas->kelas_id }}">
 						</div>
 					</div>
 					<div class="ln_solid"></div>
