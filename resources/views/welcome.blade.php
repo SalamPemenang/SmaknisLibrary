@@ -104,10 +104,9 @@
                             <p class="text">
                                 Anda bisa melihat seluruh buku yang ada di perpustakaan lewat aplikasi ini tentu juga bisa memesan dan meminjam buku
                             </p>
-                            <p> Masuk/Daftar untuk bisa meminjam dan memesan buku </p>
+                            <p> Masuk untuk bisa meminjam dan memesan buku </p>
                             <ul class="header-btn">
-                                <li><a class="main-btn btn-one" rel="nofollow" href="">MASUK</a></li>
-                                <li><a class="main-btn btn-two video-popup" href="">Daftar</a></li>
+                                <li><a class="main-btn btn-one" rel="nofollow" href="{{route('Masuk')}}">MASUK</a></li>
                             </ul>
                         </div> <!-- header content -->
                     </div>

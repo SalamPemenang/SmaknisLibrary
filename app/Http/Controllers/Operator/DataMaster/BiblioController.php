@@ -19,6 +19,10 @@ use App\Model\DataPendukung\SumberItem;
 use App\Model\DataMaster\Biblio;
 use Yajra\Datatables\Datatables;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> DaniRamdani
 class BiblioController extends Controller
 {
 	public function daftarbiblio()
@@ -110,6 +114,32 @@ class BiblioController extends Controller
 
 	public function store(Request $request)
 	{
+<<<<<<< HEAD
+=======
+		$message = [
+			'required' => 'Harap isi form ini.',
+		];
+		$this->validate($request, [
+			'judul' => 'required',
+			'edisi' => 'required',
+			'penulis_id' => 'required',
+			'isbn' => 'required',
+			'penerbit_id' => 'required',
+			'harga_buku' => 'required',
+			'penerbit_tahun' => 'required',
+			'penerbit_tempat' => 'required',
+			'deskripsi' => 'required',
+			'tipekoleksi_id' => 'required',
+			'klasifikasi_id' => 'required',
+			'gambar' => 'mimes:jpeg,jpg,png',
+			'panggil' => 'required',
+			'tingkatan' => 'required',
+			'urutan' => 'required',
+			'status_item_id' => 'required',
+			'sumber_item_id' => 'required',
+			'buku_tersedia' => 'required'
+		], $message);
+>>>>>>> DaniRamdani
 
 		$hapus = 1;
 		for ($i=1; $i <= $request->buku_tersedia; $i++) {
