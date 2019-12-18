@@ -13,22 +13,22 @@
     <title>Welcome Page</title>
 
     <!--====== Favicon Icon ======-->
-    <link rel="shortcut icon" href="assets/images/favicon.png" type="image/png">
+    <link rel="shortcut icon" href="assets-welcome/images/favicon.png" type="image/png">
 
     <!--====== Bootstrap css ======-->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets-welcome/css/bootstrap.min.css">
 
     <!--====== Line Icons css ======-->
-    <link rel="stylesheet" href="assets/css/LineIcons.css">
+    <link rel="stylesheet" href="assets-welcome/css/LineIcons.css">
 
     <!--====== Magnific Popup css ======-->
-    <link rel="stylesheet" href="assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="assets-welcome/css/magnific-popup.css">
 
     <!--====== Default css ======-->
-    <link rel="stylesheet" href="assets/css/default.css">
+    <link rel="stylesheet" href="assets-welcome/css/default.css">
 
     <!--====== Style css ======-->
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets-welcome/css/style.css">
 
 
 </head>
@@ -256,37 +256,29 @@
 
     <!--====== BACK TO TOP PART ENDS ======-->
 
-
-
-
-
-
-
-
-
     <!--====== jquery js ======-->
-    <script src="assets/js/vendor/modernizr-3.6.0.min.js"></script>
-    <script src="assets/js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="assets-welcome/js/vendor/modernizr-3.6.0.min.js"></script>
+    <script src="assets-welcome/js/vendor/jquery-1.12.4.min.js"></script>
 
     <!--====== Bootstrap js ======-->
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/popper.min.js"></script>
+    <script src="assets-welcome/js/bootstrap.min.js"></script>
+    <script src="assets-welcome/js/popper.min.js"></script>
 
     <!--====== Ajax Contact js ======-->
-    <script src="assets/js/ajax-contact.js"></script>
+    <script src="assets-welcome/js/ajax-contact.js"></script>
 
     <!--====== Scrolling Nav js ======-->
-    <script src="assets/js/jquery.easing.min.js"></script>
-    <script src="assets/js/scrolling-nav.js"></script>
+    <script src="assets-welcome/js/jquery.easing.min.js"></script>
+    <script src="assets-welcome/js/scrolling-nav.js"></script>
 
     <!--====== Validator js ======-->
-    <script src="assets/js/validator.min.js"></script>
+    <script src="assets-welcome/js/validator.min.js"></script>
 
     <!--====== Magnific Popup js ======-->
-    <script src="assets/js/jquery.magnific-popup.min.js"></script>
+    <script src="assets-welcome/js/jquery.magnific-popup.min.js"></script>
 
     <!--====== Main js ======-->
-    <script src="assets/js/main.js"></script>
+    <script src="assets-welcome/js/main.js"></script>
 
 </body>
 
