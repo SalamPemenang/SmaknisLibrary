@@ -31,12 +31,7 @@
                     	@csrf
                     	<div class="form-group">
                     		<label for="penulis_nama">Nama Penulis*</label>
-                    		<input type="text" name="penulis_nama" class="form-control @error('penulis_nama') is-invalid @enderror" value="{{ old('penulis_nama') }}" autocomplete="off">
-	                    	@error('penulis_nama')
-	                    		<span class="invalid-feedback" role="alert">
-	                    			<strong>{{ $message }}</strong>
-	                    		</span>
-	                    	@enderror
+                    		<input type="text" name="penulis_nama" class="form-control" value="{{ old('penulis_nama') }}" autocomplete="off">
                     	</div>	
                     	<button type="submit" class="btn btn-primary">Simpan</button>
                     </form>
@@ -63,12 +58,7 @@
                     	@csrf
                     	<div class="form-group">
                     		<label for="penerbit_nama">Nama Penerbit*</label>
-                    		<input type="text" name="penerbit_nama" class="form-control @error('penerbit_nama') is-invalid @enderror" value="{{ old('penerbit_nama') }}" autocomplete="off">
-	                    	@error('penerbit_nama')
-	                    		<span class="invalid-feedback" role="alert">
-	                    			<strong>{{ $message }}</strong>
-	                    		</span>
-	                    	@enderror
+                    		<input type="text" name="penerbit_nama" class="form-control" value="{{ old('penerbit_nama') }}" autocomplete="off">
                     	</div>	
                     	<button type="submit" class="btn btn-primary">Simpan</button>
                     </form>
@@ -96,12 +86,7 @@
                     	@csrf
                     	<div class="form-group">
                     		<label for="klasifikasi_nama">Nama klasifikasi*</label>
-                    		<input type="text" name="klasifikasi_nama" class="form-control @error('klasifikasi_nama') is-invalid @enderror" value="{{ old('klasifikasi_nama') }}" autocomplete="off">
-	                    	@error('klasifikasi_nama')
-	                    		<span class="invalid-feedback" role="alert">
-	                    			<strong>{{ $message }}</strong>
-	                    		</span>
-	                    	@enderror
+                    		<input type="text" name="klasifikasi_nama" class="form-control" value="{{ old('klasifikasi_nama') }}" autocomplete="off">
                     	</div>	
                     	<button type="submit" class="btn btn-primary">Simpan</button>
                     </form>
@@ -128,12 +113,7 @@
                     	@csrf
                     	<div class="form-group">
                     		<label for="tipekoleksi_nama">Nama tipekoleksi*</label>
-                    		<input type="text" name="tipekoleksi_nama" class="form-control @error('tipekoleksi_nama') is-invalid @enderror" value="{{ old('tipekoleksi_nama') }}" autocomplete="off">
-	                    	@error('tipekoleksi_nama')
-	                    		<span class="invalid-feedback" role="alert">
-	                    			<strong>{{ $message }}</strong>
-	                    		</span>
-	                    	@enderror
+                    		<input type="text" name="tipekoleksi_nama" class="form-control" value="{{ old('tipekoleksi_nama') }}" autocomplete="off">
                     	</div>	
                     	<button type="submit" class="btn btn-primary">Simpan</button>
                     </form>
@@ -161,12 +141,7 @@
                     	@csrf
                     	<div class="form-group">
                     		<label for="sumber_item_nama">Sumber Item Buku*</label>
-                    		<input type="text" name="sumber_item_nama" class="form-control @error('sumber_item_nama') is-invalid @enderror" value="{{ old('sumber_item_nama') }}" autocomplete="off">
-	                    	@error('sumber_item_nama')
-	                    		<span class="invalid-feedback" role="alert">
-	                    			<strong>{{ $message }}</strong>
-	                    		</span>
-	                    	@enderror
+                    		<input type="text" name="sumber_item_nama" class="form-control" value="{{ old('sumber_item_nama') }}" autocomplete="off">
                     	</div>	
                     	<button type="submit" class="btn btn-primary">Simpan</button>
                     </form>
@@ -193,12 +168,7 @@
                     	@csrf
                     	<div class="form-group">
                     		<label for="status_item_nama">Status Item Buku*</label>
-                    		<input type="text" name="status_item_nama" class="form-control @error('status_item_nama') is-invalid @enderror" value="{{ old('status_item_nama') }}" autocomplete="off">
-	                    	@error('status_item_nama')
-	                    		<span class="invalid-feedback" role="alert">
-	                    			<strong>{{ $message }}</strong>
-	                    		</span>
-	                    	@enderror
+                    		<input type="text" name="status_item_nama" class="form-control" value="{{ old('status_item_nama') }}" autocomplete="off">
                     	</div>	
                     	<button type="submit" class="btn btn-primary">Simpan</button>
                     </form>
@@ -225,12 +195,7 @@
                     	@csrf
                     	<div class="form-group">
                     		<label for="status_item_nama">Status Sirkulasi*</label>
-                    		<input type="text" name="status_sirkulasi_nama" class="form-control @error('status_sirkulasi_nama') is-invalid @enderror" value="{{ old('status_sirkulasi_nama') }}" autocomplete="off">
-	                    	@error('status_sirkulasi_nama')
-	                    		<span class="invalid-feedback" role="alert">
-	                    			<strong>{{ $message }}</strong>
-	                    		</span>
-	                    	@enderror
+                    		<input type="text" name="status_sirkulasi_nama" class="form-control" value="{{ old('status_sirkulasi_nama') }}" autocomplete="off">
                     	</div>	
                     	<button type="submit" class="btn btn-primary">Simpan</button>
                     </form>

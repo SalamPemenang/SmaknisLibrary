@@ -137,6 +137,7 @@
 			processing: true,
 			responsive: true,
 			serverSide: true,
+			"bDestroy": true,
 			ajax: '{!! route('operator.pendukung.datatable.tipeAnggota') !!}',
 			columns: [
 			{data: 'DT_RowIndex', name: 'DT_RowIndex', width: '5px',},
@@ -155,6 +156,7 @@
 			processing: true,
 			responsive: true,
 			serverSide: true,
+			"bDestroy": true,
 			ajax: '{!! route('operator.pendukung.datatable.jurusan') !!}',
 			columns: [
 			{data: 'DT_RowIndex', name: 'DT_RowIndex', width: '5px',},
@@ -173,6 +175,7 @@
 			processing: true,
 			responsive: true,
 			serverSide: true,
+			"bDestroy": true,
 			ajax: '{!! route('operator.pendukung.datatable.kelas') !!}',
 			columns: [
 			{data: 'DT_RowIndex', name: 'DT_RowIndex', width: '5px',},

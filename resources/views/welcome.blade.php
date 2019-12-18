@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!--====== Title ======-->
-    <title>Welcome Page</title>
+    <title>Smaknis Perpus</title>
 
     <!--====== Favicon Icon ======-->
     <link rel="shortcut icon" href="assets/images/favicon.png" type="image/png">
@@ -29,6 +29,8 @@
 
     <!--====== Style css ======-->
     <link rel="stylesheet" href="assets/css/style.css">
+    {{-- Jquery ui css --}}
+    <link rel="stylesheet" href="{{asset('gentelella/vendors/jquery/dist/css/jquery-ui.min.css')}}">
 
 
 </head>
@@ -43,7 +45,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <nav class="navbar navbar-expand-lg">
-                            <a class="navbar-brand" href="#" style="font-family: lucida calligraphy; font-size: 30px;">
+                            <a class="navbar-brand" href="{{ route('index') }}" style="font-family: lucida calligraphy; font-size: 30px;">
                                 <b>Smaknis Perpus</b>
                             </a>
 
@@ -102,10 +104,9 @@
                             <p class="text">
                                 Anda bisa melihat seluruh buku yang ada di perpustakaan lewat aplikasi ini tentu juga bisa memesan dan meminjam buku
                             </p>
-                            <p> Masuk/Daftar untuk bisa meminjam dan memesan buku </p>
+                            <p> Masuk untuk bisa meminjam dan memesan buku </p>
                             <ul class="header-btn">
-                                <li><a class="main-btn btn-one" rel="nofollow" href="">MASUK</a></li>
-                                <li><a class="main-btn btn-two video-popup" href="">Daftar</a></li>
+                                <li><a class="main-btn btn-one" rel="nofollow" href="{{route('Masuk')}}">MASUK</a></li>
                             </ul>
                         </div> <!-- header content -->
                     </div>
@@ -126,7 +127,7 @@
                          <small style="font-size: 10px;">Klik tombol search</small>
                         <div class="newsletter">
                             <form action="#">
-                                <input type="text" placeholder="Cari Buku">
+                                <input type="text" placeholder="Cari Buku" id="advanced">
                                 <button type="submit"><i class="lni-search"></i></button>
                             </form>
                         </div>
@@ -150,84 +151,36 @@
                 </div>
             </div> <!-- row -->
             <div class="row justify-content-center">
-                <div class="col-lg-4 col-md-7 col-sm-9">
-                    <div class="single-pricing mt-30">
-                        <div class="pricing-header">
-                            <center>
-                                <h5 class="sub-title">Judul Buku</h5>
-                            </center>
-                        </div>
-                        <div class="pricing-list">
-                            <center>
-                                <img src="/assets/images/default-image.jpg" width="190" >
-                            </center>
-                        </div>
-                        <div class="pricing-list">
-                            <ul>
-                                <li><i class="lni-check-mark-circle"></i> Carefully crafted components</li>
-                                <li><i class="lni-check-mark-circle"></i> Amazing page examples</li>
-                                <li><i class="lni-check-mark-circle"></i> Super friendly support team</li>
-                                <li><i class="lni-check-mark-circle"></i> Awesome Support</li>
-                            </ul>
-                        </div>
-                        <br>
-                        <div class="buttom-shape">
-                            <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 350 112.35"><defs><style>.color-2{fill:#0067f4;isolation:isolate;}.cls-1{opacity:0.1;}.cls-2{opacity:0.2;}.cls-3{opacity:0.4;}.cls-4{opacity:0.6;}</style></defs><title>bottom-part1</title><g id="bottom-part"><g id="Group_747" data-name="Group 747"><path id="Path_294" data-name="Path 294" class="cls-1 color-2" d="M0,24.21c120-55.74,214.32,2.57,267,0S349.18,7.4,349.18,7.4V82.35H0Z" transform="translate(0 0)"/><path id="Path_297" data-name="Path 297" class="cls-2 color-2" d="M350,34.21c-120-55.74-214.32,2.57-267,0S.82,17.4.82,17.4V92.35H350Z" transform="translate(0 0)"/><path id="Path_296" data-name="Path 296" class="cls-3 color-2" d="M0,44.21c120-55.74,214.32,2.57,267,0S349.18,27.4,349.18,27.4v74.95H0Z" transform="translate(0 0)"/><path id="Path_295" data-name="Path 295" class="cls-4 color-2" d="M349.17,54.21c-120-55.74-214.32,2.57-267,0S0,37.4,0,37.4v74.95H349.17Z" transform="translate(0 0)"/></g></g></svg>
-                        </div>
-                    </div> <!-- single pricing -->
-                </div>
-                <div class="col-lg-4 col-md-7 col-sm-9">
-                    <div class="single-pricing mt-30">
-                        <div class="pricing-header">
-                            <center>
-                                <h5 class="sub-title">Judul Buku</h5>
-                            </center>
-                        </div>
-                        <div class="pricing-list">
-                            <center>
-                                <img src="/assets/images/default-image.jpg" width="190" >
-                            </center>
-                        </div>
-                        <div class="pricing-list">
-                            <ul>
-                                <li><i class="lni-check-mark-circle"></i> Carefully crafted components</li>
-                                <li><i class="lni-check-mark-circle"></i> Amazing page examples</li>
-                                <li><i class="lni-check-mark-circle"></i> Super friendly support team</li>
-                                <li><i class="lni-check-mark-circle"></i> Awesome Support</li>
-                            </ul>
-                        </div>
-                        <br>
-                        <div class="buttom-shape">
-                            <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 350 112.35"><defs><style>.color-2{fill:#0067f4;isolation:isolate;}.cls-1{opacity:0.1;}.cls-2{opacity:0.2;}.cls-3{opacity:0.4;}.cls-4{opacity:0.6;}</style></defs><title>bottom-part1</title><g id="bottom-part"><g id="Group_747" data-name="Group 747"><path id="Path_294" data-name="Path 294" class="cls-1 color-2" d="M0,24.21c120-55.74,214.32,2.57,267,0S349.18,7.4,349.18,7.4V82.35H0Z" transform="translate(0 0)"/><path id="Path_297" data-name="Path 297" class="cls-2 color-2" d="M350,34.21c-120-55.74-214.32,2.57-267,0S.82,17.4.82,17.4V92.35H350Z" transform="translate(0 0)"/><path id="Path_296" data-name="Path 296" class="cls-3 color-2" d="M0,44.21c120-55.74,214.32,2.57,267,0S349.18,27.4,349.18,27.4v74.95H0Z" transform="translate(0 0)"/><path id="Path_295" data-name="Path 295" class="cls-4 color-2" d="M349.17,54.21c-120-55.74-214.32,2.57-267,0S0,37.4,0,37.4v74.95H349.17Z" transform="translate(0 0)"/></g></g></svg>
-                        </div>
-                    </div> <!-- single pricing -->
-                </div>
-                <div class="col-lg-4 col-md-7 col-sm-9">
-                    <div class="single-pricing mt-30">
-                        <div class="pricing-header">
-                            <center>
-                                <h5 class="sub-title">Judul Buku</h5>
-                            </center>
-                        </div>
-                        <div class="pricing-list">
-                            <center>
-                                <img src="/assets/images/default-image.jpg" width="190" >
-                            </center>
-                        </div>
-                        <div class="pricing-list">
-                            <ul>
-                                <li><i class="lni-check-mark-circle"></i> Carefully crafted components</li>
-                                <li><i class="lni-check-mark-circle"></i> Amazing page examples</li>
-                                <li><i class="lni-check-mark-circle"></i> Super friendly support team</li>
-                                <li><i class="lni-check-mark-circle"></i> Awesome Support</li>
-                            </ul>
-                        </div>
-                        <br>
-                        <div class="buttom-shape">
-                            <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 350 112.35"><defs><style>.color-2{fill:#0067f4;isolation:isolate;}.cls-1{opacity:0.1;}.cls-2{opacity:0.2;}.cls-3{opacity:0.4;}.cls-4{opacity:0.6;}</style></defs><title>bottom-part1</title><g id="bottom-part"><g id="Group_747" data-name="Group 747"><path id="Path_294" data-name="Path 294" class="cls-1 color-2" d="M0,24.21c120-55.74,214.32,2.57,267,0S349.18,7.4,349.18,7.4V82.35H0Z" transform="translate(0 0)"/><path id="Path_297" data-name="Path 297" class="cls-2 color-2" d="M350,34.21c-120-55.74-214.32,2.57-267,0S.82,17.4.82,17.4V92.35H350Z" transform="translate(0 0)"/><path id="Path_296" data-name="Path 296" class="cls-3 color-2" d="M0,44.21c120-55.74,214.32,2.57,267,0S349.18,27.4,349.18,27.4v74.95H0Z" transform="translate(0 0)"/><path id="Path_295" data-name="Path 295" class="cls-4 color-2" d="M349.17,54.21c-120-55.74-214.32,2.57-267,0S0,37.4,0,37.4v74.95H349.17Z" transform="translate(0 0)"/></g></g></svg>
-                        </div>
-                    </div> <!-- single pricing -->
-                </div>
+                @foreach($promosi as $key)
+                    <div class="col-lg-4 col-md-7 col-sm-9">
+                        <div class="single-pricing mt-30">
+                            <a href="{{ route('detail-buku', $key->biblio_id) }}" class="ml-4">
+                                <div class="pricing-header">
+                                    <center>
+                                        <h5 class="sub-title">{{ $key->judul }}</h5>
+                                    </center>
+                                </div>
+                                <div class="pricing-list">
+                                    <center>
+                                        <img src="/image/datamaster/biblio/{{ $key->gambar }}" width="190" >
+                                    </center>
+                                </div>
+                                <div class="pricing-list">
+                                    <ul>
+                                        <li><i class="lni-check-mark-circle"></i> Edisi {{ $key->edisi }}</li>
+                                        <li><i class="lni-check-mark-circle"></i> Ditulis Oleh {{ $key->penulis_nama }}</li>
+                                        <li><i class="lni-check-mark-circle"></i> Diterbitkan Oleh {{ $key->penerbit_nama }}</li>
+                                        <li><i class="lni-check-mark-circle"></i> Tahun terbit pada {{ $key->penerbit_tahun }}</li>
+                                    </ul>
+                                </div>
+                            </a>
+                            <br>
+                            <div class="buttom-shape">
+                                <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 350 112.35"><defs><style>.color-2{fill:#0067f4;isolation:isolate;}.cls-1{opacity:0.1;}.cls-2{opacity:0.2;}.cls-3{opacity:0.4;}.cls-4{opacity:0.6;}</style></defs><title>bottom-part1</title><g id="bottom-part"><g id="Group_747" data-name="Group 747"><path id="Path_294" data-name="Path 294" class="cls-1 color-2" d="M0,24.21c120-55.74,214.32,2.57,267,0S349.18,7.4,349.18,7.4V82.35H0Z" transform="translate(0 0)"/><path id="Path_297" data-name="Path 297" class="cls-2 color-2" d="M350,34.21c-120-55.74-214.32,2.57-267,0S.82,17.4.82,17.4V92.35H350Z" transform="translate(0 0)"/><path id="Path_296" data-name="Path 296" class="cls-3 color-2" d="M0,44.21c120-55.74,214.32,2.57,267,0S349.18,27.4,349.18,27.4v74.95H0Z" transform="translate(0 0)"/><path id="Path_295" data-name="Path 295" class="cls-4 color-2" d="M349.17,54.21c-120-55.74-214.32,2.57-267,0S0,37.4,0,37.4v74.95H349.17Z" transform="translate(0 0)"/></g></g></svg>
+                            </div>
+                        </div> <!-- single pricing -->
+                    </div>
+                @endforeach
             </div> <!-- row -->
         </div> <!-- conteiner -->
     </section>
@@ -267,7 +220,12 @@
 
     <!--====== jquery js ======-->
     <script src="assets/js/vendor/modernizr-3.6.0.min.js"></script>
-    <script src="assets/js/vendor/jquery-1.12.4.min.js"></script>
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+    {{-- JQuery UI --}}
+    <script src="{{asset('gentelella/vendors/jquery/dist/jquery-ui.min.js')}}"></script>
 
     <!--====== Bootstrap js ======-->
     <script src="assets/js/bootstrap.min.js"></script>
@@ -288,6 +246,32 @@
 
     <!--====== Main js ======-->
     <script src="assets/js/main.js"></script>
+
+    {{-- Custom JS --}}
+    {{-- Search Advanced --}}
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#advanced').autocomplete({
+                source: function(request, response) {
+                    $.ajax({
+                        url: "{{ url('buku-cari') }}",
+                        data: {
+                            term: request.term
+                        },
+                        dataType: "json",
+                        success: function(data) {
+                            response(data);
+                        },
+                        select: function(event, ui) {
+                            event.preventDefault();
+                            $('#advanced').val(ui.item.label);
+                        }
+                    });
+                },
+                minLength: 1
+            });
+        });
+    </script>
 
 </body>
 

@@ -21,36 +21,40 @@
 
 
     <div class="row">
-        <div class="x_panel">
-            <div class="x_title">
-              <h2>Riwayat Peminjaman</h2>
-              <ul class="nav navbar-right panel_toolbox">
-                <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                </li>
-                <li><a class="close-link"><i class="fa fa-close"></i></a>
-                </li>
-              </ul>
-              <div class="clearfix"></div>
-            </div>
-            
-            <div class="x_content">
-                <table class="table table-bordered" id="peminjamanDatatable">
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>Nama Anggota</th>
-                            <th>Nama Buku</th>
-                            <th>Eksemplar</th>
-                            <th>Mulai Pinjam</th>
-                            <th>Di Kembalikan</th>
-                            <th>Perpanjangan</th>
-                            <th>Denda</th>
-                            <th>Aksi</th>
-                        </tr>
-                    </thead>
-                </table>    
-            </div>
-        </div> 
+        <div class="col-sm-12">
+        
+            <div class="x_panel">
+                <div class="x_title">
+                <h2>Riwayat Peminjaman</h2>
+                <ul class="nav navbar-right panel_toolbox">
+                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                    <li><a class="close-link"><i class="fa fa-close"></i></a>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+                </div>
+                
+                <div class="x_content">
+                    <table class="table table-bordered" id="peminjamanDatatable">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Nama Anggota</th>
+                                <th>Nama Buku</th>
+                                <th>Eksemplar</th>
+                                <th>Mulai Pinjam</th>
+                                <th>Di Kembalikan</th>
+                                <th>Perpanjangan</th>
+                                <th>Denda</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                    </table>    
+                </div>
+            </div> 
+
+        </div>
     </div>
         
  
