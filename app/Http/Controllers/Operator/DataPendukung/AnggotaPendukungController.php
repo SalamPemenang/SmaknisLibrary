@@ -96,7 +96,7 @@ class AnggotaPendukungController extends Controller
         $anggotaTipe->anggota_tipe_nama = $req->anggota_tipe_nama;
         $anggotaTipe->save();
 
-        return redirect()->route('anggota.pendukung');
+        return redirect()->route('anggota.datapendukung');
     }
 
 
@@ -113,7 +113,7 @@ class AnggotaPendukungController extends Controller
         $jurusan->jurusan_nama = $req->jurusan_nama;
         $jurusan->save();
 
-        return redirect()->route('anggota.pendukung');
+        return redirect()->route('anggota.datapendukung');
     }
 
 
@@ -131,7 +131,7 @@ class AnggotaPendukungController extends Controller
         $kelas->jurusan_id = $req->jurusan_nama;
         $kelas->save();
 
-        return redirect()->route('anggota.pendukung');
+        return redirect()->route('anggota.datapendukung');
     }
 
 }

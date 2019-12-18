@@ -54,11 +54,34 @@ Route::prefix('operator')->group(function(){
 });
 
 
-// Route Admin
+// Route Admin 
 Route::prefix('admin')->group(function(){ 
     Route::get('/', 'Admin\AdminController@index')->name('admin');
     Route::get('/dasbor', 'Admin\AdminController@dasbor')->name('dasbor-admin');
+    // Admin : Anggota
+    Route::get('/daftar-anggota', 'Admin\AdminController@daftarAnggota')->name('admin.anggota');
+	// DataTable-Anggota
+    Route::get('/datatable-anggota', 'Admin\AdminController@anggotaDatatable')->name('admin.anggota.datatables');
+	// Tambah-Anggota
+    Route::get('/tambah-anggota', 'Admin\AdminController@anggotaTambah')->name('admin.anggota.tambah');
+    Route::get('/tambah-anggota/store', 'Admin\AdminController@anggotaStore')->name('admin.anggota.store');
 
+    // Data-Pendukung Anggota
+    Route::get('/anggota', 'Admin\AdminController@anggotaPendukung')->name('admin.datapendukung');
+	// DataTable-Pendukung Anggota
+    Route::get('/datatable/tipe-anggota', 'Admin\AdminController@tipeAnggotaDatatable')->name('admin.datatable.tipeAnggota'); 
+    Route::get('/datatable/jurusan', 'Admin\AdminController@jurusanDatatable')->name('admin.datatable.jurusan'); 
+    Route::get('/datatable/kelas', 'Admin\AdminController@kelasDatatable')->name('admin.datatable.kelas'); 
+		// Tambah DataPendukung
+    Route::get('/tambah/data-pendukung', 'Admin\AdminController@tambahDatapendukung')->name('admin.tambah.DataPendukung');
+		// Ubah DataPendukung
+    Route::get('/ubah/anggota-tipe/{id}', 'Admin\AdminController@ubahAnggotaTipe')->name('admin.ubah.anggota.tipe');
+    Route::get('/ubah/jurusan/{id}', 'Admin\AdminController@ubahJurusan')->name('admin.ubah.jurusan');
+    Route::get('/ubah/kelas/{id}', 'Admin\AdminController@ubahKelas')->name('admin.ubah.kelas');
+		// Store DataPendukung
+    Route::post('/store/data-pendukung/anggota-tipe', 'Admin\AdminController@storeDatapendukungTipe')->name('admin.store.DataPendukung.tipe');
+    Route::post('/store/data-pendukung/jurusan', 'Admin\AdminController@storeDatapendukungJurusan')->name('admin.store.DataPendukung.jurusan');
+    Route::post('/store/data-pendukung/kelas', 'Admin\AdminController@storeDatapendukungKelas')->name('admin.store.DataPendukung.kelas');
 });
 
 // Operator Sirkulasi
