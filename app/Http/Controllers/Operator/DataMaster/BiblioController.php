@@ -19,6 +19,10 @@ use App\Model\DataPendukung\SumberItem;
 use App\Model\DataMaster\Biblio;
 use Yajra\Datatables\Datatables;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> DaniRamdani
 class BiblioController extends Controller
 {
 	public function daftarbiblio()
@@ -110,6 +114,8 @@ class BiblioController extends Controller
 
 	public function store(Request $request)
 	{
+<<<<<<< HEAD
+=======
 		$message = [
 			'required' => 'Harap isi form ini.',
 		];
@@ -133,6 +139,7 @@ class BiblioController extends Controller
 			'sumber_item_id' => 'required',
 			'buku_tersedia' => 'required'
 		], $message);
+>>>>>>> DaniRamdani
 
 		$hapus = 1;
 		for ($i=1; $i <= $request->buku_tersedia; $i++) {

@@ -6,6 +6,8 @@ use DB;
 use Image;
 use Storage;
 use Session;
+<<<<<<< HEAD
+=======
 use Maatwebsite\Excel\Excel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -14,6 +16,7 @@ use App\Model\DataPendukung\Kelas;
 use App\Model\DataPendukung\AnggotaTipe;
 use App\Model\DataMaster\Anggota;
 use Yajra\Datatables\Datatables;
+>>>>>>> Irfan
 
 class AdminController extends Controller
 {
@@ -60,17 +63,7 @@ class AdminController extends Controller
         if(!Session::get('login-admin')){
             return redirect()->back();
         }
-
-        $posel = Session::get('posel');
-        $data = Anggota::where('posel', $posel)->get()->first();
-
-        if($data->status_anggota == 0){
-            return redirect()->route('verifikasi')->with('alert-failed', 'akun ini belum di verifikasi');
-        }
-        if($data->status_anggota == 1){
-            return view('admin.dasbor-admin');
-        }
-
+        return view('admin.dasbor-admin');
     }
 
 

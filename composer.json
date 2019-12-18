@@ -14,6 +14,13 @@
         "intervention/image": "^2.5",
         "laravel/framework": "5.7.*",
         "laravel/tinker": "^1.0",
+<<<<<<< HEAD
+<<<<<<< HEAD
+        "maatwebsite/excel": "^3.1",
+=======
+>>>>>>> DaniRamdani
+=======
+>>>>>>> Irfan
         "yajra/laravel-datatables-oracle": "~8.0"
     },
     "require-dev": {

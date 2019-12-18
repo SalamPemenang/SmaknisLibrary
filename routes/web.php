@@ -11,14 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'PublikController@promosi')->name('index');
+Route::get('/detail-buku/{id}', 'PublikController@detailBuku')->name('detail-buku');
+Route::get('/cari', 'PublikController@searchBuku')->name('buku-cari');
 
 
 //Auth
 Route::get('/Masuk', 'Auth\LoginController@ShowMasukForm')->name('Masuk');
-Route::get('/Daftar', 'Auth\RegisterController@ShowDaftarForm')->name('Daftar');
 Route::post('/Daftar-Akun', 'Auth\RegisterController@Register')->name('post-daftar');
 Route::post('/Masuk-Akun', 'Auth\LoginController@Login')->name('post-masuk');
 Route::get('/Keluar', 'Auth\LoginController@Keluar')->name('Keluar');
@@ -93,12 +92,10 @@ Route::prefix('sirkulasi')->group(function(){
     Route::post('/peminjaman/proses', 'Operator\DataSirkulasi\SirkulasiController@peminjamanProses')->name('operator.sirkulasi.peminjaman.proses');
 	// Search Ajax
 	Route::get('/search/anggota', 'Operator\DataSirkulasi\SirkulasiController@searchAnggota')->name('operator.sirkulasi.search.anggota');
-    Route::get('/search/biblio/back','Operator\DataSirkulasi\SirkulasiController@searchBiblioBack')->name('operator.sirkulasi.search.biblio.back');
-	Route::get('/search/biblio','Operator\DataSirkulasi\SirkulasiController@searchBiblio')->name('operator.sirkulasi.searchbiblio');
-	// Route::get('/search/peminjaman','Operator\DataSirkulasi\SirkulasiController@searchPeminjaman')->name('operator.sirkulasi.searchpeminjaman');
+	Route::get('/search/biblio', 'Operator\DataSirkulasi\SirkulasiController@searchBiblio');
     // Pengembalian
     Route::get('/pengembalian', 'Operator\DataSirkulasi\SirkulasiController@pengembalian')->name('operator.sirkulasi.pengembalian');
-    Route::get('/search/biblio/back','Operator\DataSirkulasi\SirkulasiController@searchBiblioBack')->name('operator.sirkulasi.searchbiblio.kembali');
+    Route::get('/search/biblio/back', 'Operator\DataSirkulasi\SirkulasiController@searchBiblioBack')->name('operator.sirkulasi.searchbiblio.kembali');
     Route::post('/pengembalian/proses', 'Operator\DataSirkulasi\SirkulasiController@pengembalianProses')->name('operator.sirkulasi.pengembalian.proses');
 	// Riwayat
 	Route::get('/lihat/riwayat/peminjaman', 'Operator\DataSirkulasi\SirkulasiController@lihatPeminjaman')->name('operator.lihat.peminjaman');

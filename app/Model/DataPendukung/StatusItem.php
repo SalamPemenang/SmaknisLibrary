@@ -11,4 +11,9 @@ class StatusItem extends Model
     protected $primaryKey = 'status_item_id';
     const CREATED_AT = 'pembuatan';
     const UPDATED_AT = 'perubahan';
+
+    public function biblio()
+    {
+    	return $this->hasOne('App\Model\DataMaster\Biblio');
+    }
 }

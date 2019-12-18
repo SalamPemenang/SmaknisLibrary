@@ -5,7 +5,11 @@ namespace App\Http\Controllers\pengguna;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Session;
-use App\Model\DataPendukung\Anggota;
+<<<<<<< HEAD
+use App\Anggota;
+=======
+use App\Model\DataMaster\Anggota;
+>>>>>>> DaniRamdani
 
 class PenggunaController extends Controller
 {
