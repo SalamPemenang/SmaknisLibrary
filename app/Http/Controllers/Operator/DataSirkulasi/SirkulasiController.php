@@ -5,12 +5,13 @@ namespace App\Http\Controllers\Operator\DataSirkulasi;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Model\DataSirkulasi\Sirkulasi;
-use App\StatusSirkulasi;
+use App\Model\DataPendukung\StatusSirkulasi;
 use App\Model\DataMaster\Anggota;
 use App\Model\DataPendukung\AnggotaTipe;
 use App\Model\DataMaster\Biblio;
 use App\Model\DataPendukung\Aturan;
-use DB;
+use Illuminate\Support\Facades\DB;
+use Session;
 use Carbon\Carbon;
 use Yajra\Datatables\Datatables;
 
@@ -27,6 +28,15 @@ class SirkulasiController extends Controller
     
     public function peminjaman()
     {
+        // if(Session::get('login-pengguna')){
+		// 	return redirect()->back();
+		// }
+		// if(Session::get('login-operator')){
+		// 	return redirect()->back();
+		// }
+		// if(Session::get('login-admin')){
+		// 	return redirect()->back();
+		// }
         $anggota = Anggota::all();
         $status = StatusSirkulasi::where('status_sirkulasi_nama', '=', 'Peminjaman')->get();
         $biblio = Biblio::where('status_item_id', 1)
@@ -86,11 +96,13 @@ class SirkulasiController extends Controller
 
         $id = $sirkulasi->biblio_id;
         $biblio = Biblio::find($id);
-        $b = DB::table('status_item')->where('status_item_nama', '=', 'tidak tersedia')->get()->first();
+        $b = DB::table('status_item')->where('status_item_nama', '=', 'Dipinjam')->get()->first();
         $biblio->status_item_id = $b->status_item_id;
         $biblio->save();
-        return redirect()->route('operator.sirkulasi.riwayat.peminjaman');
+        return redirect()->route('operator.lihat.peminjaman');
     }
+
+    // Akhir Peminjaman
     
     // Search With Ajax
 
@@ -111,9 +123,9 @@ class SirkulasiController extends Controller
     public function searchBiblio(Request $request)
     {
         $search = $request->get('term');
-        $b = DB::table('status_item')->where('status_item_nama', '=', 'Tersedia')->get()->first();
-        $tabel = DB::table('biblio')->where('status_item_id', '=', $b->status_item_id);
-        $biblio = DB::table($tabel)->where('judul', 'LIKE', '%'.$request->search."%")->get();
+        $b = DB::table('status_item')->where('status_item_nama', '=', 'Tersedia')->first();
+        $tabel = DB::table('biblio')->where('status_item_id', '=' , $b->status_item_id);
+        $biblio = DB::table($tabel)->where('judul','LIKE','%'.$search."%")->get();
         $data=array();
         foreach ($biblio as $a) {
              $data[]=array('value'=>$a->biblio_id, 'id'=>$a->biblio_id, 'label'=>$a->judul);
@@ -128,9 +140,9 @@ class SirkulasiController extends Controller
     public function searchBiblioBack(Request $request)
     {
         $search = $request->get('term');
-        $b = DB::table('status_item')->where('status_item_nama', '=', 'Tidak Tersedia')->get()->first();
+        $b = DB::table('status_item')->where('status_item_nama', '=', 'Dipinjam')->get()->first();
         $tabel = DB::table('biblio')->where('status_item_id', '=', $b->status_item_id);
-        $biblio = DB::table($tabel)->where('judul', 'LIKE', '%'.$request->search."%")->get();
+        $biblio = DB::table($tabel)->where('judul', 'LIKE', '%'.$search."%")->get();
         $data=array();
         foreach ($biblio as $a) {
              $data[]=array('value'=>$a->biblio_id, 'id'=>$a->biblio_id, 'label'=>$a->judul);
@@ -141,6 +153,8 @@ class SirkulasiController extends Controller
             return ['value'=>'No Result Found','id'=>''];
 
     }
+
+    // Akhir Search Ajax
    
     // Perpanjangan
     public function perpanjangan($id)
@@ -174,8 +188,10 @@ class SirkulasiController extends Controller
         $sirkulasi->kembali_pinjam = date('Y-'.+$c. '-'.+$b);
         $sirkulasi->status_sirkulasi_id = $request->status_sirkulasi_id;
         $sirkulasi->save();
-        return redirect()->route('operator.sirkulasi.riwayat.peminjaman');
+        return redirect()->route('operator.lihat.peminjaman');
     }
+
+    // Akhir Perpanjangan
     
     // Pengembalian
     
@@ -246,12 +262,20 @@ class SirkulasiController extends Controller
         $b = DB::table('status_item')->where('status_item_nama', '=', 'Tersedia')->get()->first();
         $biblio->status_item_id = $b->status_item_id;
         $biblio->save();
-        return redirect()->back();
+        return redirect()->route('operator.lihat.pengembalian');
     }
+
+    // Akhir Pengembalian
     
     // Riwayat 
 
     // Peminjaman
+
+    public function lihatPeminjaman()
+    {
+        return view('operator.datasirkulasi.riwayat.peminjaman');
+    }
+
     public function riwayatPeminjaman()
     {
         $status = DB::table('status_sirkulasi')->where('status_sirkulasi_nama', '=', 'Peminjaman')->get()->first();
@@ -262,57 +286,54 @@ class SirkulasiController extends Controller
         ->select('sirkulasi.*', 'sirkulasi.sirkulasi_id', 'anggota.anggota_nama', 'biblio.judul', 'biblio.eksemplar')
         ->where('status_sirkulasi_id', '=', $status->status_sirkulasi_id)
         ->orderBy('sirkulasi.sirkulasi_id', 'desc')
-        ->paginate(5);
+        ->get();
         
-        $wk = DB::table('sirkulasi')->first();
-        
-        $sirkulasi = DB::table('sirkulasi')->where('sirkulasi_id', '=', $wk->sirkulasi_id)->get();
-        
-        $now = Carbon::now()->format('Y'.'m'.'d'); 
-        $now2 = strtotime($now);
-        
-        foreach($sirkulasi as $s){
-            $a = $s->kembali_pinjam;
-            $a2 = strtotime($a);
-        }
-        
+
         return Datatables::of($peminjaman)
-                            ->addColumn('Denda', 'operator.datasirkulasi.riwayat.denda', compact('now2', 'a2', 'peminjaman'))
-                            ->addColumn('Perpanjangan', 'operator.datasirkulasi.riwayat.perpanjangan')
+                            ->addColumn('Denda', 'operator.datasirkulasi.riwayat.denda')
+                            ->addColumn('action', 'operator.datasirkulasi.riwayat.perpanjangan')
+                            ->rawColumns(['Denda', 'action'])
+                            ->addIndexColumn()
                             ->make(true);
-                            
+
     }
 
-    public function searchPeminjaman(Request $request)
-    {
-        $cari = $request->cari;
+    // public function searchPeminjaman(Request $request)
+    // {
+    //     $cari = $request->cari;
 
-        $status = DB::table('status_sirkulasi')->where('status_sirkulasi_nama', '=', 'Peminjaman')->first();
+    //     $status = DB::table('status_sirkulasi')->where('status_sirkulasi_nama', '=', 'Peminjaman')->first();
 
-        // $oke = DB::table('sirkulasi')->
-        // where('status_sirkulasi_id', '=', $status->status_sirkulasi_id);
+    //     // $oke = DB::table('sirkulasi')->
+    //     // where('status_sirkulasi_id', '=', $status->status_sirkulasi_id);
 
-        $peminjaman = DB::table('sirkulasi')
-        ->join('anggota', 'sirkulasi.anggota_id', '=', 'anggota.anggota_id')
-        ->join('biblio', 'sirkulasi.biblio_id', '=', 'biblio.biblio_id')
-        ->select('sirkulasi.*', 'anggota.anggota_nama', 'biblio.judul', 'biblio.eksemplar')
-        ->where('anggota_nama', 'LIKE', "%".$cari."%", "AND" , 'status_sirkulasi_id', '=', $status->status_sirkulasi_id)->paginate(5);
+    //     $peminjaman = DB::table('sirkulasi')
+    //     ->join('anggota', 'sirkulasi.anggota_id', '=', 'anggota.anggota_id')
+    //     ->join('biblio', 'sirkulasi.biblio_id', '=', 'biblio.biblio_id')
+    //     ->select('sirkulasi.*', 'anggota.anggota_nama', 'biblio.judul', 'biblio.eksemplar')
+    //     ->where('anggota_nama', 'LIKE', "%".$cari."%", "AND" , 'status_sirkulasi_id', '=', $status->status_sirkulasi_id)->paginate(5);
         
-        $wk = DB::table('sirkulasi')->first();
+    //     $wk = DB::table('sirkulasi')->first();
         
-        $sirkulasi = DB::table('sirkulasi')->where('sirkulasi_id', '=', $wk->sirkulasi_id)->get();
+    //     $sirkulasi = DB::table('sirkulasi')->where('sirkulasi_id', '=', $wk->sirkulasi_id)->get();
         
-        $now = Carbon::now()->format('Y'.'m'.'d'); 
-        $now2 = strtotime($now);
+    //     $now = Carbon::now()->format('Y'.'m'.'d'); 
+    //     $now2 = strtotime($now);
         
-        foreach($sirkulasi as $s){
-            $a = $s->kembali_pinjam;
-            $a2 = strtotime($a);
-        }
+    //     foreach($sirkulasi as $s){
+    //         $a = $s->kembali_pinjam;
+    //         $a2 = strtotime($a);
+    //     }
 
-        return view('operator.datasirkulasi.riwayat.peminjaman', compact('peminjaman', 'now2', 'a2'));
-    }
+    //     return view('operator.datasirkulasi.riwayat.peminjaman', compact('peminjaman', 'now2', 'a2'));
+    // }
+
     // Pengembalian
+    public function lihatPengembalian()
+    {
+        return view('operator.datasirkulasi.riwayat.pengembalian');
+    }
+
     public function riwayatPengembalian()
     {
         $status = DB::table('status_sirkulasi')->where('status_sirkulasi_nama', '=', 'Pengembalian')->get()->first();
@@ -324,7 +345,87 @@ class SirkulasiController extends Controller
         ->where('status_sirkulasi_id', '=', $status->status_sirkulasi_id)
         ->orderBy('sirkulasi.sirkulasi_id', 'desc')
         ->get();
-        return view('operator.datasirkulasi.riwayat.pengembalian', compact('pengembalian'));
+
+        return Datatables::of($pengembalian)->addIndexColumn()->make(true);
     }
+
+    // Akhir Riwayat
+
+    // Konfirmasi Pemesanan
+    public function konfirmasi()
+    {
+        return view('operator.datasirkulasi.konfirmasi.konfirmasi');
+    }
+
+    public function konfirmasiDatatable()
+    {
+        $status = DB::table('status_sirkulasi')->where('status_sirkulasi_nama', '=', 'Konfirmasi')->get()->first();
+        $konfirmasi = DB::table('sirkulasi')
+        ->join('anggota', 'sirkulasi.anggota_id', '=', 'anggota.anggota_id')
+        ->join('biblio', 'sirkulasi.biblio_id', '=', 'biblio.biblio_id')
+        ->select('sirkulasi.*', 'anggota.anggota_nama', 'biblio.judul', 'biblio.edisi', 'biblio.penerbit_tahun', 'biblio.eksemplar')
+        ->where('status_sirkulasi_id', '=', $status->status_sirkulasi_id)
+        ->orderBy('sirkulasi.sirkulasi_id', 'desc')
+        ->get();
+
+        return Datatables::of($konfirmasi)
+                            ->addIndexColumn()
+                            ->addColumn('aksi', 'operator.datasirkulasi.konfirmasi.aksi')
+                            ->rawColumns(['aksi'])
+                            ->make(true);
+    }
+
+    public function konfirmasiGet($id)
+    {
+        $konfirmasi = DB::table('sirkulasi')
+        ->join('anggota', 'sirkulasi.anggota_id', '=', 'anggota.anggota_id')
+        ->join('biblio', 'sirkulasi.biblio_id', '=', 'biblio.biblio_id')
+        ->select('sirkulasi.*', 'anggota.anggota_nama', 'biblio.judul', 'biblio.edisi', 'biblio.penerbit_tahun', 'biblio.eksemplar')
+        ->where('sirkulasi_id', '=', $id)
+        ->first();
+
+        return view('operator.datasirkulasi.konfirmasi.edit', compact('konfirmasi'));
+    }
+
+    public function konfirmasiProses(Request $request, $id)
+    {
+        $sirkulasi = Sirkulasi::find($id);
+        $sirkulasi->anggota_id = $request->anggota_id;
+        $sirkulasi->biblio_id = $request->biblio_id;
+        $aID = $sirkulasi->anggota_id;
+        $anggota = Anggota::find($aID);
+        $aturan = DB::table('aturan')->where('anggota_tipe_id', '=', $anggota->anggota_tipe_id)->get()->first();
+        $sirkulasi->aturan_id = $aturan->aturan_id;
+        $statusA = DB::table('status_sirkulasi')->where('status_sirkulasi_nama', '=', 'Riwayat Konfirmasi')->first();
+        $sirkulasi->status_sirkulasi_id = $statusA->status_sirkulasi_id;
+        $sirkulasi->save();
+        $id = $sirkulasi->biblio_id;
+        $biblio = Biblio::find($id);
+        $status = DB::table('status_item')->where('status_item_nama', '=', 'Tidak Tersedia')->get()->first();
+        $biblio->status_item_id = $status->status_item_id;
+        $biblio->promosi = $request->promosi;
+        $biblio->save();
+        return redirect()->route('operator.riwayat.konfirmasi');
+    }
+
+    public function lihatKonfirmasi()
+    {
+        return view('operator.datasirkulasi.konfirmasi.riwayat');
+    }
+
+    public function riwayatKonfirmasi()
+    {
+        $status = DB::table('status_sirkulasi')->where('status_sirkulasi_nama', '=', 'Riwayat Konfirmasi')->get()->first();
+        $konfirmasi = DB::table('sirkulasi')
+        ->join('anggota', 'sirkulasi.anggota_id', '=', 'anggota.anggota_id')
+        ->join('biblio', 'sirkulasi.biblio_id', '=', 'biblio.biblio_id')
+        ->select('sirkulasi.*', 'anggota.anggota_nama', 'biblio.judul', 'biblio.edisi', 'biblio.penerbit_tahun', 'biblio.eksemplar')
+        ->where('status_sirkulasi_id', '=', $status->status_sirkulasi_id)
+        ->get();
+
+        return Datatables::of($konfirmasi)->addIndexColumn()->make(true);
+    }
+
+    // Akhir Konfirmasi Pemesanan
     
 }

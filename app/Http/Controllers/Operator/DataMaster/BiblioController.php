@@ -19,6 +19,7 @@ use App\Model\DataPendukung\SumberItem;
 use App\Model\DataMaster\Biblio;
 use Yajra\Datatables\Datatables;
 
+
 class BiblioController extends Controller
 {
 	public function daftarbiblio()
@@ -35,9 +36,9 @@ class BiblioController extends Controller
 		->select('biblio.*',
 			'penulis.penulis_nama',
 			'penerbit.penerbit_nama',
-			'status_item.status_item_nama', 
+			'status_item.status_item_nama'
 		)
-		->where('terhapus', '=', '1')
+		->where('biblio.terhapus', '=' , '1')
 		->get();
 
 		return Datatables::of($biblio)
@@ -288,7 +289,7 @@ class BiblioController extends Controller
 			'penerbit.penerbit_nama',
 			'status_item.status_item_nama', 
 		)
-		->where('terhapus', '=', '2')
+		->where('biblio.terhapus', '=', '2')
 		->get();
 
 		return Datatables::of($riwayat)
