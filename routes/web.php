@@ -18,7 +18,6 @@ Route::get('/', function () {
 
 //Auth
 Route::get('/Masuk', 'Auth\LoginController@ShowMasukForm')->name('Masuk');
-Route::get('/Daftar', 'Auth\RegisterController@ShowDaftarForm')->name('Daftar');
 Route::post('/Daftar-Akun', 'Auth\RegisterController@Register')->name('post-daftar');
 Route::post('/Masuk-Akun', 'Auth\LoginController@Login')->name('post-masuk');
 Route::get('/Keluar', 'Auth\LoginController@Keluar')->name('Keluar');
