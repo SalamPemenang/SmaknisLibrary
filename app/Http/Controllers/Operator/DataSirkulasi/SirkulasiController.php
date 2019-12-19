@@ -123,9 +123,7 @@ class SirkulasiController extends Controller
     public function searchBiblio(Request $request)
     {
         $search = $request->get('term');
-        $b = DB::table('status_item')->where('status_item_nama', '=', 'Tersedia')->first();
-        $tabel = DB::table('biblio')->where('status_item_id', '=' , $b->status_item_id);
-        $biblio = DB::table($tabel)->where('judul','LIKE','%'.$search."%")->get();
+        $biblio = DB::table('biblio')->where('judul','LIKE','%'.$search."%")->get();
         $data=array();
         foreach ($biblio as $a) {
              $data[]=array('value'=>$a->biblio_id, 'id'=>$a->biblio_id, 'label'=>$a->judul);
@@ -140,9 +138,7 @@ class SirkulasiController extends Controller
     public function searchBiblioBack(Request $request)
     {
         $search = $request->get('term');
-        $b = DB::table('status_item')->where('status_item_nama', '=', 'Dipinjam')->get()->first();
-        $tabel = DB::table('biblio')->where('status_item_id', '=', $b->status_item_id);
-        $biblio = DB::table($tabel)->where('judul', 'LIKE', '%'.$search."%")->get();
+        $biblio = DB::table('biblio')->where('judul', 'LIKE', '%'.$search."%")->get();
         $data=array();
         foreach ($biblio as $a) {
              $data[]=array('value'=>$a->biblio_id, 'id'=>$a->biblio_id, 'label'=>$a->judul);
